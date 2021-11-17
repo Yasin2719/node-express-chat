@@ -57,6 +57,7 @@ module.exports = function (app, server) {
         }], function(err, result) {      
         if (err) {       
         res.send(err);       
+        
         } else {        
         res.json(result);       
         }})

@@ -134,10 +134,12 @@
 		const socket = io('http://localhost:3000');
 
 		button.addEventListener('click', AddNewMsg)
+		message.value = "";
 
 		function AddNewMsg(){
 			var today = new Date();
 			const li = document.createElement('li');
+			li.className = "me";
 			const divName = document.createElement('div')
 			divName.className ="name";
 			const divMessage = document.createElement('div')
@@ -152,9 +154,10 @@
 			divName.appendChild(spanName);
 			divMessage.appendChild(p);
 			divMessage.appendChild(spanTime)
-			var currentUl = document.getElementById('li1');
-			currentUl.appendChild(divName, divMessage);
-			currentUl.appendChild(divMessage);
+			li.appendChild(divName);
+			li.appendChild(divMessage);
+			var currentUl = document.getElementById('ul1');
+			currentUl.appendChild(li);
 			socket.emit('plusMsg',message.value,today,userid);
 		}
 	</script>
